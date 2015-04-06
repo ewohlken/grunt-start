@@ -113,12 +113,13 @@ module.exports = function(grunt){
 			},
 			prod: {
 				options: {
-					filenameSuffix: '.html'
+					filenameSuffix: '.html',
+					includePath: '<%= path.dev + path.html %>partials/'
 				},
 				files: [{
 					expand: true,
 					cwd: '<%=path.dev + path.html %>',
-					src: '**/*.html',
+					src: '*.html',
 					dest: '<%=path.prod %>'
 				}]
 			}
@@ -149,7 +150,7 @@ module.exports = function(grunt){
 		},
 		uglify: {
 			prod: {
-				src: '<%=path.prod + path.js%>app.js',
+				src: '<%=path.dev + path.js%>app.js',
 				dest: '<%=path.prod + path.js%>app.min.js'
 			}
 		},
